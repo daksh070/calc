@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="ca.css">
+</head>
+
+<body>
+    <div class="calculator">
+        <input type="text" id="display" />
+        <div class="buttons">
+            <button onclick="num(7)">7</button>
+            <button onclick="num(8)">8</button>
+            <button onclick="num(9)">9</button>
+            <button onclick="delet()">C</button>
+
+            <button onclick="num(4)">4</button>
+            <button onclick="num(5)">5</button>
+            <button onclick="num(6)">6</button>
+            <button onclick="symbol('+')">+</button>
+
+            <button onclick="num(1)">1</button>
+            <button onclick="num(2)">2</button>
+            <button onclick="num(3)">3</button>
+            <button onclick="symbol('-')">-</button>
+
+            <button onclick="num(0)">0</button>
+            <button onclick="point()">.</button>
+            <button onclick="result()">=</button>
+            <button onclick="symbol('*')">*</button>
+
+            <button onclick="symbol('/')">/</button>
+            <button onclick="symbol('%')">%</button>
+        </div>
+    </div>
+
+    <script>
+        let display = document.getElementById('display');
+
+        function num(number) {
+            display.value += number;
+        }
+
+        function symbol(operator) {
+            display.value += ` ${operator} `;
+        }
+
+        function point() {
+            if (!display.value.includes('.')) {
+                display.value += '.';
+            }
+        }
+
+        function delet() {
+            display.value = '';
+        }
+
+        function result() {
+            let value = display.value;
+
+            // Try evaluating the expression
+            let evaluatedResult = eval(value);
+
+            if (evaluatedResult === 0 || evaluatedResult) {
+                display.value = evaluatedResult;
+            } else {
+                display.value = 'Error';
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>
